@@ -1,0 +1,43 @@
+{
+  "questions": [
+    {
+      "id": 38711,
+      "index": 2,
+      "text": "Qual é a sua Cidade:"
+    },
+    {
+      "id": 411,
+      "index": 0,
+      "text": "Qual é a sua marca favorita:"
+    },
+    {
+      "id": 10,
+      "index": 1,
+      "text": "Qual é a sua idade:"
+    }
+  ],
+  "answer": [
+    {
+      "id": 1,
+      "index": 1,
+      "text": "Coca Cola",
+      "questions": 411
+    },
+    {
+      "id": 2,
+      "index": 0,
+      "text": "Fanta",
+      "questions": 411
+    },
+    {
+      "index": 5,
+      "id": 3
+    },
+    {
+      "id": 3,
+      "index": 4,
+      "text": "Dolly",
+      "questions": 411
+    }
+  ]
+}

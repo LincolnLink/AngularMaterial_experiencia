@@ -1,0 +1,87 @@
+http://localhost:3000/questions
+
+
+###
+
+http://localhost:3000/questions/2
+
+###
+
+POST http://localhost:3000/questions HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 10,
+  "index": 2,
+  "text": "x2"
+}
+
+###
+
+PUT http://localhost:3000/questions/38711 HTTP/1.1
+Content-type: application/json
+
+{
+  "id": 38711,
+  "index": 1,
+  "text": "x1"
+}
+
+###
+
+DELETE http://localhost:3000/questions/1 HTTP/1.1
+
+###
+
+
+http://localhost:3000/answer
+
+###
+
+
+http://localhost:3000/answer/1
+
+###
+
+
+POST http://localhost:3000/answer HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": 0,
+  "index": 2,
+  "text": "Dolly",
+  "questions": 411
+
+}
+
+###
+
+PUT http://localhost:3000/answer/3?questions=411 HTTP/1.1
+Content-type: application/json
+
+{
+
+  "index": 5
+
+}
+
+###
+
+
+PUT http://localhost:3000/answer/3 HTTP/1.1
+Content-type: application/json
+
+{
+  "id": 3,
+  "index": 3,
+  "text": "Refri",
+  "questions": 411
+
+}
+
+###
+
+DELETE http://localhost:3000/answer/1 HTTP/1.1
+
+###
