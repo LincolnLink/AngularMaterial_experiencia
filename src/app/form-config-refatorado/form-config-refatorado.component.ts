@@ -58,7 +58,7 @@ export class FormConfigRefatoradoComponent implements OnInit {
          .pipe(
            catchError(error => {
              console.error(error);
-             return EMPTY;
+             return [];
            }),
            map(list =>{
             return list.sort((x, y)=>{
@@ -71,7 +71,7 @@ export class FormConfigRefatoradoComponent implements OnInit {
          .pipe(
            catchError(error => {
              console.error(error);
-             return EMPTY;
+             return [];
            }),
            map(list =>{
             return list.sort((x, y)=>{
@@ -84,7 +84,7 @@ export class FormConfigRefatoradoComponent implements OnInit {
          .pipe(
            catchError(error => {
              console.error(error);
-             return EMPTY;
+             return [];
            }),
            map(list =>{
             return list.sort((x, y)=>{
@@ -118,19 +118,28 @@ export class FormConfigRefatoradoComponent implements OnInit {
           grupo.chapter.index = result.req1[i1].index;
           grupo.chapter.text = result.req1[i1].text;
 
-          for (let i2 = 0; i2 < result.req2.length; i2++)
-          {
-            if(result.req1[i1].id == result.req2[i2].chapterId)
-            {
-              grupo.questions.push(result.req2[i2]);
-              grupo.questions[i2].listAnswer = [];
 
-              for (let i3 = 0; i3 < result.req3.length; i3++)
+          if(result.req2.length !== 0)
+          {
+            for (let i2 = 0; i2 < result.req2.length; i2++)
+            {
+              if(result.req1[i1].id == result.req2[i2].chapterId)
               {
-                if(result.req2[i2].id == result.req3[i3].questionsId)
+                grupo.questions.push(result.req2[i2]);
+                grupo.questions[i2].listAnswer = [];
+
+
+                if(result.req3.length !== 0)
                 {
-                  grupo.questions[i2].listAnswer.push(result.req3[i3]);
+                  for (let i3 = 0; i3 < result.req3.length; i3++)
+                  {
+                    if(result.req2[i2].id == result.req3[i3].questionsId)
+                    {
+                      grupo.questions[i2].listAnswer.push(result.req3[i3]);
+                    }
+                  }
                 }
+
               }
             }
           }
