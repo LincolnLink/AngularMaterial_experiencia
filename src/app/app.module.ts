@@ -8,10 +8,16 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
+import { TableComponent } from './table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { TablePaginatorComponent } from './table-paginator/table-paginator.component';
 
 @NgModule({
   declarations: [
     AppComponent
+
   ],
   imports: [
     BrowserModule,
@@ -20,7 +26,10 @@ import {MatSelectModule} from '@angular/material/select';
     CollapseModule.forRoot(),
     DragDropModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
 
   ],
   providers: [],

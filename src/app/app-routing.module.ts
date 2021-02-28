@@ -6,7 +6,7 @@ const routes: Routes = [
 
 
    {
-    path: '', pathMatch: 'full', redirectTo: 'formConfigRefatorado'
+    path: '', pathMatch: 'full', redirectTo: 'table'
    },
    {
      path: 'formConfig',
@@ -14,8 +14,18 @@ const routes: Routes = [
    },
    {
     path: 'formConfigRefatorado',
-    loadChildren: () => import('./form-config-refatorado/form-config-refatorado.module').then(m => m.FormConfigRefatoradoModule)
-  }
+    loadChildren: () => import('./form-config-refatorado/form-config-refatorado.module')
+      .then(m => m.FormConfigRefatoradoModule)
+   },
+   {
+     path: 'table',
+     loadChildren: () => import('./table/module/module.module').then( i => i.TableModule)
+   },
+   {
+     path: 'tablePaginator',
+     loadChildren: () => import('./table-paginator/table-paginator-module/table-paginator-module')
+      .then(t => t.TablePaginatorModuleModule)
+   }
 
 ];
 
