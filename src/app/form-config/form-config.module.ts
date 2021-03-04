@@ -9,6 +9,11 @@ import { FormConfigComponent } from './form-config.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 //DragDrop do CDK
 import { DragDropModule } from '@angular/cdk/drag-drop';
+//Acordion do AngularMaterial
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule} from '@angular/material/expansion';
+import { MatIconModule} from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -20,6 +25,10 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
     DragDropModule,//DragDrop do CDK
     AccordionModule.forRoot(),//NGX-Bootstrap
+
+    MatExpansionModule, //Acordion do AngularMaterial
+    MatIconModule,
+    MatButtonModule
   ],
   providers: []
 })

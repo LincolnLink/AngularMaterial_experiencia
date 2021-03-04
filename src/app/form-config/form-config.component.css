@@ -1,4 +1,4 @@
-
+/*DragDrop do CDK*/
 .example-list {
   /*width: 500px;*/
   max-width: 100%;
@@ -49,3 +49,45 @@
 }
 
 
+/*Acordion AngularMaterial*/
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+/*editado - Removendo sombra dos card da pagina*/
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+/*editado - removendo borda do botão*/
+button.mat-icon-button {
+  border: none;
+  height: 24px;
+
+}
+button.mat-icon-button:focus {
+  border: none;
+  outline: none;
+}
+
+
+/*removido do angular.ts*/
+/*"./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",*/

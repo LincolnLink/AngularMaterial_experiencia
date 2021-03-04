@@ -6,106 +6,101 @@
 <div class="row">
 
   <div class="col-sm-12 col-md-9">
+
     <div cdkDropList class="example-list" (cdkDropListDropped)="dropChapter($event, listGroup$)">
-      <accordion [isAnimated]="true">
-        <div cdkDrag class="example-box" [id]="grupo.chapter.id"
-        *ngFor="let grupo of listGroup$">
 
-          <accordion-group >
-            <button class="btn btn-link btn-block romeFocus" accordion-heading type="button">
+      <div cdkDrag class="example-box" [id]="grupo.chapter.id"
+      *ngFor="let grupo of listGroup$">
 
-              <div class=" d-flex justify-content-between align-items-center">
-                <div class="pull-left float-left"> {{ grupo.chapter.text }}</div>
+              <mat-accordion class="example-headers-align" multi>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header style="padding-left: 0.5em;
+                  padding-right: 0.5em;">
 
-                <button type="button" class="btn btn-outline-light text-dark" style="font-size: 0" (click)="delete(grupo.chapter.id)">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill-rule="evenodd"
-                      d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
-                    </path>
-                    <path
-                      d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z">
-                    </path>
-                    <path
-                      d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
-                    </path>
-                  </svg>
-                </button>
-              </div>
+                    <mat-panel-title>
+                      {{ grupo.chapter.text }}
+                    </mat-panel-title>
 
-            </button>
+                    <mat-panel-description >
+                    <p></p>
 
-            <h1>Perguntas</h1>
-            <div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="dropQuestions($event, grupo.questions)">
-              <accordion [isAnimated]="true">
-                <div cdkDrag *ngFor="let question of grupo.questions; let i = index" class="example-box">
+                      <!--Edita o flex-grow caso queira mais itens nassa barra-->
+                      <mat-icon>
+                        <button class="mat-icon-button btn-outline-light"
+                        (click)="delete(grupo.chapter.id)">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </mat-icon>
 
-                  <accordion-group >
-                    <button class="btn btn-link btn-block romeFocus" accordion-heading type="button">
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
 
-                      <div class=" d-flex justify-content-between align-items-center">
+                  <h1>Perguntas</h1>
+                  <div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="dropQuestions($event, grupo.questions)">
+                    <div cdkDrag *ngFor="let question of grupo.questions; let i = index" class="example-box">
+
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header style="padding-left: 0.5em;
+                      padding-right: 0.5em;">
+                          <mat-panel-title>
+                            {{ question.typeQuestions }}
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            {{ question.text }}
+
+                            <button class="mat-icon-button btn-outline-light"
+                            (click)="delete(question.id)">
+                              <mat-icon>delete</mat-icon>
+                            </button>
+
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <h1>Respostas</h1>
+                        <div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="dropAnswer($event, grupo.questions[i].listAnswer)">
+
+                          <div cdkDrag class="example-box" [id]="answer.id"
+                          *ngFor="let answer of grupo.questions[i].listAnswer">
 
 
-                        <div class="d-flex justify-content-start">
-                          <div class="bord-person"> {{ question.typeQuestions }}</div>
+                            <mat-expansion-panel hideToggle>
+                              <mat-expansion-panel-header style="padding-left: 0.5em; padding-right: 0.5em;">
 
-                          {{ question.text }}
+                                <mat-panel-title></mat-panel-title>
+
+                                <mat-panel-description style="color: rgba(0,0,0,.54);">
+                                  {{ answer.text }}
+
+
+                                    <button class="mat-icon-button btn-outline-light"
+                                    (click)="delete(answer.id)">
+                                      <mat-icon>delete</mat-icon>
+                                    </button>
+
+
+                                </mat-panel-description>
+                              </mat-expansion-panel-header>
+                            </mat-expansion-panel>
+                          </div>
                         </div>
 
-                        <button type="button" class="btn btn-outline-light text-dark" style="font-size: 0" (click)="delete(question.id)">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                            <path fill-rule="evenodd"
-                              d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
-                            </path>
-                            <path
-                              d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z">
-                            </path>
-                            <path
-                              d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
-                            </path>
-                          </svg>
-                        </button>
-                      </div>
+                      </mat-expansion-panel>
 
-                    </button>
-
-                    <h1>Respostas</h1>
-                    <div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="dropAnswer($event, grupo.questions[i].listAnswer)">
-                      <div cdkDrag class="example-box" [id]="answer.id"
-                      *ngFor="let answer of grupo.questions[i].listAnswer">
-
-                            <div class=" d-flex justify-content-between align-items-center">
-                                <div class="pull-left float-left"> {{ answer.text }}</div>
-
-                                <button type="button" class="btn btn-outline-light text-dark" style="font-size: 0"
-                                (click)="delete(answer.id)">
-                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                                    <path fill-rule="evenodd"
-                                      d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
-                                    </path>
-                                    <path
-                                      d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z">
-                                    </path>
-                                    <path
-                                      d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
-                                    </path>
-                                  </svg>
-                                </button>
-                            </div>
-                      </div>
                     </div>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
 
-                  </accordion-group>
+      </div>
 
-                </div>
-              </accordion>
-            </div>
 
-          </accordion-group>
 
-        </div>
-      </accordion>
+
+
     </div>
   </div>
+
+
   <div class="col-sm-12 col-md-3">
     <h1>Regras</h1>
     <form action="/action_page.php">
