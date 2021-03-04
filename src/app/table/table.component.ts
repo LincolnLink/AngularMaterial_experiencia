@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { PeriodicElement, PeriodicElement2 } from './Entidades/periodicElement';
+import { PeriodicElement, PeriodicElement2 } from '../shared/Entidades/periodicElement';
 import { TableDataSource, TableItem } from './table-datasource';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { TestBed } from '@angular/core/testing';

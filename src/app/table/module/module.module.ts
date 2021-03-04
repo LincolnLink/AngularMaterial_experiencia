@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TableRoutingModule } from './table-routing.module';
-
-
 import { TableComponent } from '../table.component';
+
+ //Tabela do Angular Material
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { SelectionModel } from '@angular/cdk/collections';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -20,10 +20,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   imports: [
     CommonModule,
     TableRoutingModule,
-    MatTableModule,
+
+    MatTableModule, //Tabela do Angular Material
     MatPaginatorModule,
     MatSortModule,
-    MatCheckboxModule
+    MatSelectModule,
+    MatCheckboxModule,
   ]
 })
 export class TableModule { }

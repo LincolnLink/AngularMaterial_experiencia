@@ -1,34 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
-import {MatSelectModule} from '@angular/material/select';
-import { TableComponent } from './table/table.component';
+//NGX-Bootstrap
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+//DragDrop do CDK
+import { DragDropModule } from '@angular/cdk/drag-drop';
+//Tabela do Angular Material
+import { MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { TablePaginatorComponent } from './table-paginator/table-paginator.component';
+
+
 
 @NgModule({
-  declarations: [
-    AppComponent
-
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule, //Basico do Angular
     AppRoutingModule,
     BrowserAnimationsModule,
-    CollapseModule.forRoot(),
-    DragDropModule,
     HttpClientModule,
-    MatSelectModule,
-    MatTableModule,
+
+    CollapseModule.forRoot(), //NGX-Bootstrap
+
+    DragDropModule, //DragDrop do CDK
+
+    MatTableModule, // Tabela do Angular Material
     MatPaginatorModule,
+    MatSelectModule,
     MatSortModule
 
   ],
