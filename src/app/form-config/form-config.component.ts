@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-//RxJS
-import { catchError, switchMap } from 'rxjs/operators';
+//NxJS
+import { catchError, map, switchMap } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 //Entidades
 import { chapter } from '../shared/Entidades/chapter';
 import { questions } from 'src/app/shared/Entidades/questions';
 import { answer } from '../shared/Entidades/answer';
+import { dateGroup } from '../shared/Entidades/dateGroup';
 //Serviços
 import { ChapterService } from '../shared/service/chapter.service';
 import { QuestionsService } from '../shared/service/questions.service';
@@ -19,29 +20,19 @@ import { AnswerService } from './../shared/service/answer.service';
   templateUrl: './form-config.component.html',
   styleUrls:['form-config.component.css']
 })
-export class FormConfigComponent implements OnInit, OnDestroy {
+export class FormConfigComponent implements OnInit {
 
 
-  // Lista de perguntas
-  listChapter$: chapter[] = [];
-  subChapter: Subscription = new Subscription;
-  dropChapterDestroi: Subscription = new Subscription;
 
-  listQuestions$: questions[] = [];
-  subQuestions: Subscription = new Subscription;
-
-  listAnswer$: answer[] = [];
-  subAnswer: Subscription = new Subscription;
-
+    listGroup$: dateGroup[] = [];
+    //public listGroup$!: Observable<dateGroup[]>;
 
     initGroupD(){
       return {
         chapter: {} as chapter,
-        questions: [],
-        answer: []
+        questions: []
       }
     }
-
 
     constructor(
     private questionsService: QuestionsService,
@@ -51,98 +42,124 @@ export class FormConfigComponent implements OnInit, OnDestroy {
 
 
     ngOnInit(){
-      this.onRefresh();
-      console.log("Passou aqui");
-    }
 
-    ngOnDestroy(): void {
+      // Requisições dos capitulos/perguntas/respostas,a lista vem ordenada baseada no index
+      const allReq$ = forkJoin({
 
-      this.subChapter.unsubscribe();
-      this.subQuestions.unsubscribe();
-      this.subAnswer.unsubscribe();
+         req1: this.chapterService.list()
+         .pipe(
+           catchError(error => {
+             console.error(error);
+             return [];
+           }),
+           map(list =>{
+            return list.sort((x, y)=>{
+              return x.index - y.index;
+            });
+           })
+         ),
 
-      this.dropChapterDestroi.unsubscribe();
+         req2: this.questionsService.list()
+         .pipe(
+           catchError(error => {
+             console.error(error);
+             return [];
+           }),
+           map(list =>{
+            return list.sort((x, y)=>{
+              return x.index - y.index;
+            });
+           })
+         ),
 
-    }
+         req3: this.answerService.list()
+         .pipe(
+           catchError(error => {
+             console.error(error);
+             return [];
+           }),
+           map(list =>{
+            return list.sort((x, y)=>{
+              return x.index - y.index;
+            });
+           })
+         )
+      });
 
-
-
-  // Busca as perguntas listadas e bota em ordem baseada com index
-    onRefresh(){
-
-
-      // Carregando a lista de capitulo!
-      this.chapterService.list()
-      .pipe(catchError(error => EMPTY))
-      .subscribe(
-        (dados: chapter[]) => {
-          dados.forEach(element => {
-            this.listChapter$.push(element)
-          });
-
-          // Ordenação com base no index
-          this.listChapter$.sort((x, y)=>{
-            return x.index - y.index;
-          });
-        },
-        error => console.log(error)
-      );
-
-
-      // Carregando a lista de perguntas!
-      this.questionsService.list()
-      .pipe(catchError(error => EMPTY))
-      .subscribe(
-        (dados: questions[]) => {
-          dados.forEach(element => {
-            this.listQuestions$.push(element)
-          });
-
-          // Ordenação com base no index
-          this.listQuestions$.sort((x, y)=>{
-            return x.index - y.index;
-          });
-        },
-        error => console.log(error)
-      );
-
-
-      // Carregando a lista de respostas
-      this.answerService.list()
-      .pipe(catchError(error => EMPTY))
-      .subscribe(
-        (sucesso: answer[]) =>{
-          sucesso.forEach(element => {
-            this.listAnswer$.push(element)
-          });
-
-          // Ordenação com base no index TODO transformar em um Pipe
-          this.listAnswer$.sort((x, y)=>{
-            return x.index - y.index;
-          });
-        },
-        error => console.log(error)
-      )
-
-
+      // Alimenta o array que agrupa as listas!
+      allReq$.pipe(map((reqs) => this.agrupando(reqs))).subscribe(sucess => this.listGroup$ = sucess);
     }
 
 
+    // Distribuição com base no objeto final, e agrupa em um unico array!
+    agrupando(result: {
+      req1: chapter[];
+      req2: questions[];
+      req3: answer[];
+    })
+    {
+      let list: dateGroup[] = [];
+
+      // Distribuição de dados!
+      if(result.req1.length !== 0)
+      {
+        for (let i1 = 0; i1 < result.req1.length; i1++)
+        {
+          let grupo: dateGroup = this.initGroupD();
+
+          grupo.chapter.id = result.req1[i1].id
+          grupo.chapter.index = result.req1[i1].index;
+          grupo.chapter.text = result.req1[i1].text;
+
+
+          if(result.req2.length !== 0)
+          {
+            for (let i2 = 0; i2 < result.req2.length; i2++)
+            {
+              if(result.req1[i1].id == result.req2[i2].chapterId)
+              {
+                grupo.questions.push(result.req2[i2]);
+                grupo.questions[i2].listAnswer = [];
+
+
+                if(result.req3.length !== 0)
+                {
+                  for (let i3 = 0; i3 < result.req3.length; i3++)
+                  {
+                    if(result.req2[i2].id == result.req3[i3].questionsId)
+                    {
+                      grupo.questions[i2].listAnswer.push(result.req3[i3]);
+                    }
+                  }
+                }
+
+              }
+            }
+          }
+
+          list.push(grupo);
+        }
+      }
+
+      return list;
+    }
 
 
     // Método que atualiza o index, quando a pessoa troca a posição!
-    dropChapter(event: CdkDragDrop<string[]>, list: chapter[]) {
+    dropChapter(event: CdkDragDrop<string[]>, list: dateGroup[]) {
       moveItemInArray(list, event.previousIndex, event.currentIndex);
+
+      let listchapter: chapter[] = [];
 
       for (let index = 0; index < list.length; index++) {
 
-        list[index].index = index;
+        list[index].chapter.index = index;
+        listchapter.push(list[index].chapter)
       }
 
-
-        this.dropChapterDestroi = this.chapterService.bulkupdate(list)
+        this.chapterService.bulkupdate(listchapter)
         .pipe(catchError(error => EMPTY))
-        .subscribe();
+        .subscribe(sucess =>{console.log("mandou", sucess)});
     }
 
     // Método que atualiza o index, quando a pessoa troca a posição!
@@ -154,7 +171,7 @@ export class FormConfigComponent implements OnInit, OnDestroy {
         list[index].index = index;
       }
 
-      this.questionsService.bulkupdate(list)
+     this.questionsService.bulkupdate(list)
         .pipe(catchError(error => EMPTY))
         .subscribe();
     }
@@ -163,29 +180,16 @@ export class FormConfigComponent implements OnInit, OnDestroy {
     dropAnswer(event: CdkDragDrop<string[]>, list: answer[]) {
       moveItemInArray(list, event.previousIndex, event.currentIndex);
 
-      let listAnswerTotal = [];
+      //let listQ: questions[] = [];
 
-      // Pega as id's diferentes das questiones e lista!
-      const listIdQuestion = [...new Set(list.map(item => item.questionsId))];
-      //console.log(listIdQuestion);
+      for (let index = 0; index < list.length; index++) {
 
-      // Varredura baseada nos id da questão
-      for (let k = 0; k < listIdQuestion.length; k++) {
-
-        // Lista apenas os itens que tem o Id informado!
-        let lengthQuestionById = list.filter(i => i.questionsId === listIdQuestion[k])
-
-        // Com base a sua ordem que foi definida no frontEnd, recebe o novo Id
-        for (let index = 0; index < lengthQuestionById.length; index++) {
-
-          lengthQuestionById[index].index = index;
-          listAnswerTotal.push(lengthQuestionById[index]);
-
-        }
+        list[index].index = index;
       }
-      console.log("Lista com index atualizada: ", listAnswerTotal)
 
-      this.answerService.bulkupdate(listAnswerTotal)
+      //listQ.push(list);
+
+     this.answerService.bulkupdate(list)
         .pipe(catchError(error => EMPTY))
         .subscribe();
     }
@@ -209,10 +213,10 @@ export class FormConfigComponent implements OnInit, OnDestroy {
             // Atualizando os index!
             for (let index = 0; index < this.listQuestions$.length; index++) {
 
-            this.listQuestions$[index].index = index;
+              this.listQuestions$[index].index = index;
 
-            this.questionsService.update(this.listQuestions$[index])
-            .subscribe();
+              this.questionsService.update(this.listQuestions$[index])
+              .subscribe();
             }
 
           console.log(sucess)
@@ -223,12 +227,7 @@ export class FormConfigComponent implements OnInit, OnDestroy {
       )*/
     }
 
-    linkingAnswer(idQuestions: string){
-      return this.listAnswer$.filter(i => i.questionsId == idQuestions);
-    }
 
-    linkingQuestion(idChapter: string){
-      return this.listQuestions$.filter(i => i.chapterId == idChapter);
-    }
+
 
 }

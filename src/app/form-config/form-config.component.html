@@ -1,117 +1,77 @@
 <h1>Lista de Grupos de perguntas</h1>
-<!--
-<div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let movie of listQuestions$"
-    cdkDrag [id]="movie.id">
 
-    <div class="row">
-      <div class="col-sm-12">
-        <div class=" d-flex justify-content-between align-items-center">
-          <div>
-
-              {{ movie.text }} btn btn-outline-light text-dark
-
-          </div>
-
-          <button type="button" class="btn btn-outline-light text-dark" style="font-size: 0" (click)="delete(movie.id)">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-              <path fill-rule="evenodd"
-                d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
-              </path>
-              <path
-                d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z">
-              </path>
-              <path
-                d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
-              </path>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12">
-        conteduo!
-
-      </div>
-    </div>
-
-  </div>
-</div>
--->
 <br />
 
 
-<div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="dropChapter($event, listChapter$)">
-  <accordion [isAnimated]="true">
-    <div class="example-box" *ngFor="let chapter of listChapter$"
-      cdkDrag [id]="chapter.id">
+<div class="row">
 
-      <accordion-group >
-        <button class="btn btn-link btn-block romeFocus" accordion-heading type="button">
+  <div class="col-sm-12 col-md-9">
+    <div cdkDropList class="example-list" (cdkDropListDropped)="dropChapter($event, listGroup$)">
+      <accordion [isAnimated]="true">
+        <div cdkDrag class="example-box" [id]="grupo.chapter.id"
+        *ngFor="let grupo of listGroup$">
 
-          <div class=" d-flex justify-content-between align-items-center">
-            <div class="pull-left float-left"> {{ chapter.text }}</div>
+          <accordion-group >
+            <button class="btn btn-link btn-block romeFocus" accordion-heading type="button">
 
-            <button type="button" class="btn btn-outline-light text-dark" style="font-size: 0" (click)="delete(chapter.id)">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                <path fill-rule="evenodd"
-                  d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
-                </path>
-                <path
-                  d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z">
-                </path>
-                <path
-                  d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
-                </path>
-              </svg>
-            </button>
-          </div>
+              <div class=" d-flex justify-content-between align-items-center">
+                <div class="pull-left float-left"> {{ grupo.chapter.text }}</div>
 
-        </button>
-        <h1>Perguntas</h1>
-
-        <div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="dropQuestions($event, listQuestions$)">
-          <accordion [isAnimated]="true">
-            <div class="example-box" *ngFor="let question of linkingQuestion(chapter.id)"
-              cdkDrag [id]="question.id">
-
-              <accordion-group >
-                <button class="btn btn-link btn-block romeFocus" accordion-heading type="button">
-
-                  <div class=" d-flex justify-content-between align-items-center">
-
-                    <div class="d-flex justify-content-start">
-                      <div class="bord-person"> {{ question.typeQuestions }}</div>
-
-                       {{ question.text }}
-                    </div>
-
-                    <button type="button" class="btn btn-outline-light text-dark" style="font-size: 0" (click)="delete(question.id)">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                        <path fill-rule="evenodd"
-                          d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
-                        </path>
-                        <path
-                          d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z">
-                        </path>
-                        <path
-                          d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
-                        </path>
-                      </svg>
-                    </button>
-                  </div>
-
+                <button type="button" class="btn btn-outline-light text-dark" style="font-size: 0" (click)="delete(grupo.chapter.id)">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill-rule="evenodd"
+                      d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
+                    </path>
+                    <path
+                      d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z">
+                    </path>
+                    <path
+                      d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
+                    </path>
+                  </svg>
                 </button>
+              </div>
 
-                <h1>Respostas</h1>
-                <div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="dropAnswer($event, listAnswer$)">
-                  <accordion [isAnimated]="true">
-                    <div class="example-box" *ngFor="let answer of linkingAnswer(question.id)"
-                        cdkDrag [id]="answer.id">
-                        <accordion-group >
-                          <button class="btn btn-link btn-block romeFocus" accordion-heading type="button">
+            </button>
+
+            <h1>Perguntas</h1>
+            <div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="dropQuestions($event, grupo.questions)">
+              <accordion [isAnimated]="true">
+                <div cdkDrag *ngFor="let question of grupo.questions; let i = index" class="example-box">
+
+                  <accordion-group >
+                    <button class="btn btn-link btn-block romeFocus" accordion-heading type="button">
+
+                      <div class=" d-flex justify-content-between align-items-center">
+
+
+                        <div class="d-flex justify-content-start">
+                          <div class="bord-person"> {{ question.typeQuestions }}</div>
+
+                          {{ question.text }}
+                        </div>
+
+                        <button type="button" class="btn btn-outline-light text-dark" style="font-size: 0" (click)="delete(question.id)">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill-rule="evenodd"
+                              d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
+                            </path>
+                            <path
+                              d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z">
+                            </path>
+                            <path
+                              d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
+                            </path>
+                          </svg>
+                        </button>
+                      </div>
+
+                    </button>
+
+                    <h1>Respostas</h1>
+                    <div class="col-ms-12" cdkDropList class="example-list" (cdkDropListDropped)="dropAnswer($event, grupo.questions[i].listAnswer)">
+                      <div cdkDrag class="example-box" [id]="answer.id"
+                      *ngFor="let answer of grupo.questions[i].listAnswer">
 
                             <div class=" d-flex justify-content-between align-items-center">
                                 <div class="pull-left float-left"> {{ answer.text }}</div>
@@ -131,25 +91,141 @@
                                   </svg>
                                 </button>
                             </div>
-                          </button>
-                        </accordion-group>
+                      </div>
                     </div>
-                  </accordion>
+
+                  </accordion-group>
+
                 </div>
-
-              </accordion-group>
-
+              </accordion>
             </div>
-          </accordion>
+
+          </accordion-group>
+
         </div>
-
-      </accordion-group>
-
+      </accordion>
     </div>
-  </accordion>
+  </div>
+  <div class="col-sm-12 col-md-3">
+    <h1>Regras</h1>
+    <form action="/action_page.php">
+      <div class="form-group">
+        <label>Alterar tipo de pergunta: </label>
+        <select class="form-control">
+          <option>-</option>
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label >Alterar a estrutura da pergunta: </label>
+        <select class="form-control" >
+          <option>-</option>
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label >Regras de aplicação: </label>
+        <div class="d-flex">
+          <select class="form-control">
+            <option>-</option>
+            <option>Regra 1</option>
+            <option>Regra 2</option>
+            <option>Regra 3</option>
+          </select>
+          <button type="submit" class="btn btn-primary mb-2 ml-2">Add</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Regras de filtro: </label>
+        <div class="d-flex">
+          <select class="form-control">
+            <option>-</option>
+            <option>Regra 1</option>
+            <option>Regra 2</option>
+            <option>Regra 3</option>
+          </select>
+          <button type="submit" class="btn btn-primary mb-2 ml-2">Add</button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="mr-sm-2">Range:</label>
+        <div class="d-flex">
+          <input type="number" class="form-control" placeholder="1" >
+          <div class="ml-2 mr-2 pt-1"><p>A</p></div>
+          <input type="number" class="form-control" placeholder="10" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label  class="mr-sm-2">Limite de Caracteres:</label>
+        <div class="d-flex">
+          <input type="number" class="form-control" placeholder="1" >
+          <div class="ml-2 mr-2 pt-1"><p>A</p></div>
+          <input type="number" class="form-control" placeholder="10" >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="mr-sm-2">Numeros validos</label>
+        <input type="text" class="form-control form-control">
+      </div>
+
+      <div class="form-group">
+        <label class="mr-sm-2">Rodiziar</label>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" >Linha
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" >Coluna
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input"  >SubCapitulo
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" >Perguntas capitulo
+          </label>
+        </div>
+      </div>
+
+      <h2 class="text-primary">Loop</h2>
+
+      <div class="form-group">
+        <label class="mr-sm-2">Break</label>
+        <input type="text" class="form-control form-control">
+      </div>
+
+      <div class="form-group">
+        <label class="mr-sm-2">Voltas definidas</label>
+        <input type="text" class="form-control form-control">
+      </div>
+
+      <div class="form-group">
+        <label>Interação com perguntas: </label>
+        <select class="form-control">
+          <option>Q2</option>
+          <option>Q3</option>
+          <option>Q1</option>
+        </select>
+      </div>
+
+    </form>
+  </div>
 </div>
-
-
+<br>
+<br>
 
 
 
