@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { FormConfigRoutingModule } from './form-config-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+
+//Component
+import { FormConfigRoutingModule } from './form-config-routing.module';
 import { FormConfigComponent } from './form-config.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//NGX-Bootstrap
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+//DragDrop do CDK
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
   declarations: [FormConfigComponent],
   imports: [
-    CommonModule,
+    CommonModule,// Basico do Angular
     HttpClientModule,
     FormConfigRoutingModule,
-    DragDropModule,
-    AccordionModule.forRoot(),
+
+    DragDropModule,//DragDrop do CDK
+    AccordionModule.forRoot(),//NGX-Bootstrap
   ],
   providers: []
 })

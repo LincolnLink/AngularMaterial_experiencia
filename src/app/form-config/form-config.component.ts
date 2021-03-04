@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-
+//RxJS
 import { catchError, switchMap } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { Subscription } from 'rxjs/internal/Subscription';
-
+//Entidades
 import { chapter } from '../shared/Entidades/chapter';
 import { questions } from 'src/app/shared/Entidades/questions';
 import { answer } from '../shared/Entidades/answer';
+//Serviços
 import { ChapterService } from '../shared/service/chapter.service';
 import { QuestionsService } from '../shared/service/questions.service';
 import { AnswerService } from './../shared/service/answer.service';

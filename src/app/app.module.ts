@@ -1,7 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 //NGX-Bootstrap
@@ -26,12 +26,13 @@ import { MatSortModule } from '@angular/material/sort';
 
     CollapseModule.forRoot(), //NGX-Bootstrap
 
+    /*
     DragDropModule, //DragDrop do CDK
 
     MatTableModule, // Tabela do Angular Material
     MatPaginatorModule,
     MatSelectModule,
-    MatSortModule
+    MatSortModule*/
 
   ],
   providers: [],

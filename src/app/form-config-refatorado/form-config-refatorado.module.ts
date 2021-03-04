@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
+//Component
 import { FormConfigRefatoradoRoutingModule } from './form-config-refatorado-routing.module';
 import { FormConfigRefatoradoComponent } from './form-config-refatorado.component';
-
-import { DragDropModule } from '@angular/cdk/drag-drop';
+//DragDrop do CDK
 import { AccordionModule } from 'ngx-bootstrap/accordion';
-
-
+//NGX-Bootstrap
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -17,8 +16,10 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
     CommonModule,
     HttpClientModule,
     FormConfigRefatoradoRoutingModule,
-    DragDropModule,
-    AccordionModule.forRoot()
+
+    DragDropModule, //DragDrop do CDK
+
+    AccordionModule.forRoot() //NGX-Bootstrap
 
   ],
   providers: []

@@ -1,23 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-
+//NxJS
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
-
-
+//Entidades
 import { chapter } from '../shared/Entidades/chapter';
 import { questions } from 'src/app/shared/Entidades/questions';
 import { answer } from '../shared/Entidades/answer';
 import { dateGroup } from '../shared/Entidades/dateGroup';
+//Serviços
 import { ChapterService } from '../shared/service/chapter.service';
 import { QuestionsService } from '../shared/service/questions.service';
 import { AnswerService } from './../shared/service/answer.service';
-
-/*interface valorSelect {
-  value: boolean;
-  viewValue: string;
-}*/
 
 @Component({
   selector: 'app-form-config-refatorado',
@@ -25,13 +20,6 @@ import { AnswerService } from './../shared/service/answer.service';
   styleUrls: ['./form-config-refatorado.component.css']
 })
 export class FormConfigRefatoradoComponent implements OnInit {
-
-/*
-  matSelect: valorSelect[] = [
-      {value: true, viewValue: 'Sim'},
-      {value: false, viewValue: 'Não'},
-    ];*/
-
 
     listGroup$: dateGroup[] = [];
     //public listGroup$!: Observable<dateGroup[]>;
