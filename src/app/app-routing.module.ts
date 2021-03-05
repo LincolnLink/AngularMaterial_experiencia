@@ -25,6 +25,11 @@ const routes: Routes = [
      path: 'tablePaginator',
      loadChildren: () => import('./table-paginator/table-paginator-module/table-paginator-module')
       .then(t => t.TablePaginatorModuleModule)
+   },
+   {
+     path: 'tableCompleto',
+     loadChildren: () => import('./table-completo/table-completo/table-completo.module')
+      .then(t => t.TableCompletoModule)
    }
 
 ];

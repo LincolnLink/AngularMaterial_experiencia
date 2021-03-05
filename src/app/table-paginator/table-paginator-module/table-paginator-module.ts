@@ -7,7 +7,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
-
+//Card
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -20,6 +21,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
+
+    MatCardModule //card
 
 
   ]

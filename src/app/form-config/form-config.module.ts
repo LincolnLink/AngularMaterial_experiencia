@@ -13,6 +13,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule} from '@angular/material/expansion';
 import { MatIconModule} from '@angular/material/icon';
+//card
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -28,7 +30,9 @@ import { MatIconModule} from '@angular/material/icon';
 
     MatExpansionModule, //Acordion do AngularMaterial
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+
+    MatCardModule //card
   ],
   providers: []
 })

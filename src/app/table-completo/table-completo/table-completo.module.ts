@@ -1,34 +1,30 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { TableRoutingModule } from './table-routing.module';
-import { TableComponent } from '../table.component';
- //Tabela do Angular Material
+//Component
+import { TableCompletoComponent } from '../table-completo.component';
+import { TableCompletoRoutingModule } from './table-completo-routing.module';
+//Tabela do Angular Material
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCheckboxModule} from '@angular/material/checkbox';
-//Card
-import { MatCardModule} from '@angular/material/card';
+//card
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
-  declarations:
-  [
-    TableComponent
-  ],
+  declarations: [TableCompletoComponent],
   imports: [
     CommonModule,
-    TableRoutingModule,
+    TableCompletoRoutingModule,
 
     MatTableModule, //Tabela do Angular Material
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
-    MatCheckboxModule,
 
-    MatCardModule // card
+    MatCardModule //card
   ]
 })
-export class TableModule { }
+export class TableCompletoModule { }

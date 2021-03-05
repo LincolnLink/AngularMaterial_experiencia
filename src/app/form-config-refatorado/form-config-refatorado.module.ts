@@ -8,6 +8,8 @@ import { FormConfigRefatoradoComponent } from './form-config-refatorado.componen
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 //NGX-Bootstrap
 import { DragDropModule } from '@angular/cdk/drag-drop';
+//card
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
     DragDropModule, //DragDrop do CDK
 
-    AccordionModule.forRoot() //NGX-Bootstrap
+    AccordionModule.forRoot(), //NGX-Bootstrap
+
+    MatCardModule //card
 
   ],
   providers: []
