@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 //NxJS
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -20,7 +20,7 @@ import { AnswerService } from './../shared/service/answer.service';
   templateUrl: './form-config.component.html',
   styleUrls:['form-config.component.css']
 })
-export class FormConfigComponent implements OnInit {
+export class FormConfigComponent implements OnInit, AfterContentInit {
 
 
 
@@ -144,6 +144,12 @@ export class FormConfigComponent implements OnInit {
       return list;
     }
 
+
+    ngAfterContentInit(){
+
+
+
+    }
 
     // Método que atualiza o index, quando a pessoa troca a posição!
     dropChapter(event: CdkDragDrop<string[]>, list: dateGroup[]) {

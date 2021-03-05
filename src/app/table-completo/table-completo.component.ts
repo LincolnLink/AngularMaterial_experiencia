@@ -5,6 +5,7 @@ import { PeriodicElement } from '../shared/Entidades/periodicElement';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -38,7 +39,7 @@ export class TableCompletoComponent implements AfterViewInit, OnInit {
     {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
   ];
 
-  displayedColumns: string[] = ['position', 'name', 'symbol', 'weight'];
+  displayedColumns: string[] = ['position', 'name', 'symbol', 'weight', 'actions'];
 
   dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
 
@@ -62,6 +63,19 @@ export class TableCompletoComponent implements AfterViewInit, OnInit {
     return this.ELEMENT_DATA.map(t => t.weight).reduce((acc, value) => acc + value, 0);
   }
 
+
+  excluirData(element: PeriodicElement){
+
+    //console.log('oque é isso: ', element)
+
+    this.ELEMENT_DATA = this.ELEMENT_DATA.filter(obj => obj.position != element.position);
+
+    this.dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
+
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+
+  }
 
 
 

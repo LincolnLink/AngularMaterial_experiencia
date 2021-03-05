@@ -2,7 +2,7 @@
 <br>
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Lista de Grupos de perguntas</mat-card-title>
+    <mat-card-title>Lista de Grupos de perguntas 3° refatoração</mat-card-title>
     <mat-card-subtitle></mat-card-subtitle>
   </mat-card-header>
 </mat-card>
@@ -20,9 +20,8 @@
       *ngFor="let grupo of listGroup$">
 
               <mat-accordion class="example-headers-align" multi>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header style="padding-left: 0.5em;
-                  padding-right: 0.5em;">
+                <mat-expansion-panel >
+                  <mat-expansion-panel-header>
 
                     <mat-panel-title>
                       {{ grupo.chapter.text }}
@@ -47,8 +46,7 @@
                     <div cdkDrag *ngFor="let question of grupo.questions; let i = index" class="example-box">
 
                       <mat-expansion-panel>
-                        <mat-expansion-panel-header style="padding-left: 0.5em;
-                      padding-right: 0.5em;">
+                        <mat-expansion-panel-header >
                           <mat-panel-title>
                             {{ question.typeQuestions }}
                           </mat-panel-title>
@@ -71,7 +69,7 @@
 
 
                             <mat-expansion-panel hideToggle>
-                              <mat-expansion-panel-header style="padding-left: 0.5em; padding-right: 0.5em;">
+                              <mat-expansion-panel-header>
 
                                 <mat-panel-title></mat-panel-title>
 

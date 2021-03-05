@@ -11,6 +11,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 //card
 import {MatCardModule} from '@angular/material/card';
+//btn
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -23,8 +25,8 @@ import {MatCardModule} from '@angular/material/card';
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
-
-    MatCardModule //card
+    MatCardModule, //card
+    MatButtonModule //btn
   ]
 })
 export class TableCompletoModule { }

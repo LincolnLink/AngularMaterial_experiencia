@@ -88,6 +88,27 @@ button.mat-icon-button:focus {
   outline: none;
 }
 
+/*editando - deixando conteudo responsivo*/
+
+.mat-expansion-panel-content.mat-expansion-panel-body{
+
+  padding-left: 0.5em !important;
+  padding-right: 0.5em !important;
+
+}
+
+.panel-Responsivo-padding{
+
+  padding-left: 0.5em !important;
+  padding-right: 0.5em !important;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description{
+  flex-basis: auto;
+}
+
+
 
 /*removido do angular.ts*/
 /*"./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",*/
