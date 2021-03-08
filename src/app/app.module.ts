@@ -13,8 +13,7 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
-
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 @NgModule({
@@ -27,6 +26,8 @@ import { MatSortModule } from '@angular/material/sort';
 
     CollapseModule.forRoot(), //NGX-Bootstrap
 
+    //GoogleChartsModule.forRoot(),//grafico
+
     /*
     DragDropModule, //DragDrop do CDK
 
@@ -34,6 +35,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatSelectModule,
     MatSortModule*/
+
+  ],
+  exports:[
 
   ],
   providers: [],

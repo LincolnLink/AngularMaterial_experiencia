@@ -6,7 +6,7 @@ const routes: Routes = [
 
 
    {
-    path: '', pathMatch: 'full', redirectTo: 'table'
+    path: '', pathMatch: 'full', redirectTo: 'tableDinamica'
    },
    {
      path: 'formConfig',
@@ -30,7 +30,17 @@ const routes: Routes = [
      path: 'tableCompleto',
      loadChildren: () => import('./table-completo/table-completo/table-completo.module')
       .then(t => t.TableCompletoModule)
-   }
+   },
+   {
+     path: 'graficos',
+     loadChildren: () => import('./graficos/graficos/graficos.module')
+      .then(g => g.GraficosModule)
+   },
+   {
+    path: 'tableDinamica',
+    loadChildren: () => import('./table-dinamico/table-dinamico-module/table-dynamic.module')
+     .then(t => t.TableDinamicoModule)
+  }
 
 ];
 

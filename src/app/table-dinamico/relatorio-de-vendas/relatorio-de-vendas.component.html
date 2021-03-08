@@ -1,0 +1,14 @@
+
+<div class="relatorio-de-vendas">
+  <h2>Relatório de vendas</h2>
+  <table-aninhada
+    [colunas]="colunas"
+    [linhas]="linhas"
+    [extratorDeFilhos]="extratorDeLinhasFilhas"
+    [extratorDeClasseCss]="extratorDeCssClassCustomizadaParaLinha" ></table-aninhada>
+</div>
+
+<ng-template #colunaDeAcao let-linha="linha" >
+  <button class="botao-selecionar" (click)="selecionaLinha(linha)" >Ver</button>
+</ng-template>
+
