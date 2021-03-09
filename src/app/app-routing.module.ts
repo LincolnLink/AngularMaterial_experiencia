@@ -38,7 +38,7 @@ const routes: Routes = [
    },
    {
     path: 'tableDinamica',
-    loadChildren: () => import('./table-dinamico/table-dinamico-module/table-dynamic.module')
+    loadChildren: () => import('./table-dinamico/table-dynamic.module')
      .then(t => t.TableDinamicoModule)
   }
 

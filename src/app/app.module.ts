@@ -14,10 +14,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { TesteComponentDinamicoComponent } from './teste-component-dinamico/teste-component-dinamico.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TesteComponentDinamicoComponent],
   imports: [
     BrowserModule, //Basico do Angular
     AppRoutingModule,
