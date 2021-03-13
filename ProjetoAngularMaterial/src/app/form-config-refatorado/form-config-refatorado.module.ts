@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 //Component
 import { FormConfigRefatoradoRoutingModule } from './form-config-refatorado-routing.module';
 import { FormConfigRefatoradoComponent } from './form-config-refatorado.component';
@@ -8,8 +9,8 @@ import { FormConfigRefatoradoComponent } from './form-config-refatorado.componen
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 //NGX-Bootstrap
 import { DragDropModule } from '@angular/cdk/drag-drop';
-//card
-import { MatCardModule } from '@angular/material/card';
+
+
 
 
 @NgModule({
@@ -18,12 +19,13 @@ import { MatCardModule } from '@angular/material/card';
     CommonModule,
     HttpClientModule,
     FormConfigRefatoradoRoutingModule,
+    SharedModule,
 
     DragDropModule, //DragDrop do CDK
 
     AccordionModule.forRoot(), //NGX-Bootstrap
 
-    MatCardModule //card
+
 
   ],
   providers: []

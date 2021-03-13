@@ -7,6 +7,8 @@ import { CampoControlErroComponent } from './component/campo-control-erro/campo-
 //alert do prime
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+//card
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -20,9 +22,13 @@ import {MessageModule} from 'primeng/message';
     ReactiveFormsModule,
     MessagesModule, // lib PremiumNG
     MessageModule,
+    MatCardModule, //card
   ],
   exports:[
-    CampoControlErroComponent
+    CampoControlErroComponent,
+    MatCardModule, //card
+    MessagesModule, // lib PremiumNG
+    MessageModule,
   ]
 })
 export class SharedModule { }

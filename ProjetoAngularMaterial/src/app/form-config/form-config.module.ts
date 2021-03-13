@@ -13,8 +13,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule} from '@angular/material/expansion';
 import { MatIconModule} from '@angular/material/icon';
-//card
-import { MatCardModule } from '@angular/material/card';
+import { SharedModule } from '../shared/shared.module';
+
 
 
 
@@ -24,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
     CommonModule,// Basico do Angular
     HttpClientModule,
     FormConfigRoutingModule,
+    SharedModule,
 
     DragDropModule,//DragDrop do CDK
     AccordionModule.forRoot(),//NGX-Bootstrap
@@ -32,7 +33,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
 
-    MatCardModule //card
+
   ],
   providers: []
 })

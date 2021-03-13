@@ -32,8 +32,8 @@ export class CampoDinamicoComponent implements ControlValueAccessor {
   //Valores dropdown
   @Input() listValue: IPessoas[] = [];
 
-
-
+  //teste
+  @Input() condicao2: boolean = false;
 
   private innerValue: any;
 
@@ -83,6 +83,7 @@ export class CampoDinamicoComponent implements ControlValueAccessor {
  setDisabledState?(isDisabled: boolean): void {
    this.isReadOnly = isDisabled;
  }
+
 
 
 }

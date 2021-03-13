@@ -15,7 +15,7 @@
     (ngModelChange)="getAmount()">
   </div>
 
-  <button type="submit" class="btn btn-primary mb-3 mt-3" *ngIf="hidenAmount()" (click)="getAmount()">Criar dropdowns</button>
+  <button type="submit" class="btn btn-primary mb-3 mt-3" (click)="aki()">Console log</button>
 
 
   <div class="col-md-6"  formArrayName="listDropDown" >
@@ -24,9 +24,12 @@
 
       <campo-dinamico formControlName={{i}}
       [id]="listField[i]" [label]="listField[i]"
-      [listValue]="ListPessoas"
-      >
+      [listValue]="ListPessoas">
       </campo-dinamico>
+
+<!--[condicao2]=isInValidTouched(item.value)-->
+<!--{{this.isInValidTouched(listDropDown)}}-->
+<!--{{this.isInValidTouched(amount)}}-->
 
     </div>
 

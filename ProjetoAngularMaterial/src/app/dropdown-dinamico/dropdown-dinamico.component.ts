@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IPessoas } from '../shared/Entidades/Ipessoas';
 import { DropdownService } from '../shared/service/dropdown.service';
 import { FormValidationsService } from '../shared/service/form-validations.service';
@@ -43,15 +43,15 @@ export class DropdownDinamicoComponent implements OnInit {
     this.getFields();
 
     this.formulario = this.formBuilder.group({
-      nome: [''],
-      amount: [''],
+      nome: ['', Validators.requiredTrue],
+      amount: ['', Validators.required],
       listDropDown: this.buildDropDown()
     })
   }
 
   // Criando os dropdown
   buildDropDown() {
-    const values = this.ListPessoas.map(v => new FormControl(false));
+    const values = this.ListPessoas.map(v => new FormControl([''], Validators.requiredTrue));
     return this.formBuilder.array(values, Validators.required);
   }
 
@@ -63,7 +63,7 @@ export class DropdownDinamicoComponent implements OnInit {
     this.removeFields();
     this.amountOfFiel = amout; //recebe novo valor
     for (let i = 1; i <= amout; i++) { //cria qtde selects
-      this.listField.push(i);
+      this.listField.push(`Campo ${i}`);
       this.addFields();
     }
   }
@@ -72,8 +72,8 @@ export class DropdownDinamicoComponent implements OnInit {
   getFields(){
     this.dropdownService.getPessoas().forEach((p) =>{
       this.ListPessoas.push({
-        id: null,
-        name: `Seleciona`,
+        id: 0,
+        name: `Select`,
       })
 
       p.forEach((value) => {
@@ -123,8 +123,35 @@ export class DropdownDinamicoComponent implements OnInit {
   }
 
 
+  // (VALIDAÇÃO) Verifica se o campo foi tocado e se é valido!
+  isInValidTouched(campo: any){
+
+    //console.log('oque temos aqui: ',this.formulario.get(campo))
+    console.log('oque tem aqui: ',campo);
+/*
+    let x = (
+      !this.formulario.get(campo)?.valid &&
+      (this.formulario.get(campo)?.touched || this.formulario.get(campo)?.dirty)
+    );
+*/
+    //return x == undefined? false: x;
+
+    return true;
+  }
 
 
+aki(){
+
+  //Tratando o array
+
+  console.log(this.listDropDown.controls)
+
+  // propriedade que Pega o valor selecionado
+  //console.log(this.listDropDown.controls[0].value)
+
+  // propriedade de validação!
+  //console.log(this.listDropDown.controls[0].valid)
+}
 
 
 

@@ -4,13 +4,12 @@ import { CommonModule } from '@angular/common';
 //Component
 import { TableCompletoComponent } from '../table-completo.component';
 import { TableCompletoRoutingModule } from './table-completo-routing.module';
+import { SharedModule } from '../../shared/shared.module';
 //Tabela do Angular Material
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
-//card
-import {MatCardModule} from '@angular/material/card';
 //btn
 import {MatButtonModule} from '@angular/material/button';
 
@@ -20,12 +19,12 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [
     CommonModule,
     TableCompletoRoutingModule,
+    SharedModule,
 
     MatTableModule, //Tabela do Angular Material
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
-    MatCardModule, //card
     MatButtonModule //btn
   ]
 })

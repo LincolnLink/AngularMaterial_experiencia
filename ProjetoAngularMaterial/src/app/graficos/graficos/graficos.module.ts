@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 //componet
 import { GraficosComponent } from '../graficos.component';
 import { GraficosRoutingModule } from './graficos.routing.module';
-//card
-import { MatCardModule } from '@angular/material/card';
+import { SharedModule } from '../../shared/shared.module';
 //grafico
 import { GoogleChartsModule } from 'angular-google-charts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -16,8 +15,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     CommonModule,
     GraficosRoutingModule,
     NgxChartsModule,
-
-    MatCardModule, //card
+    SharedModule,
 
     GoogleChartsModule,//grafico
 

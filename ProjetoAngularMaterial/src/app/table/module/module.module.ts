@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { TableRoutingModule } from './table-routing.module';
 import { TableComponent } from '../table.component';
+import { SharedModule } from '../../shared/shared.module';
  //Tabela do Angular Material
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -21,6 +22,7 @@ import { MatCardModule} from '@angular/material/card';
   imports: [
     CommonModule,
     TableRoutingModule,
+    SharedModule,
 
     MatTableModule, //Tabela do Angular Material
     MatPaginatorModule,
@@ -28,7 +30,7 @@ import { MatCardModule} from '@angular/material/card';
     MatSelectModule,
     MatCheckboxModule,
 
-    MatCardModule // card
+
   ]
 })
 export class TableModule { }
