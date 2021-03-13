@@ -1,0 +1,18 @@
+
+
+<app-primeiro>
+  <ng-template let-names="names">
+    <ol>
+      <ng-container *ngFor="let name of listName">
+        <li>{{ name }}</li>
+      </ng-container>
+    </ol>
+  </ng-template>
+</app-primeiro>
+
+
+<h1>Nova forma de chamar( sem template customizável)</h1>
+
+<app-primeiro
+[names2]="listName">
+</app-primeiro>

@@ -1,0 +1,47 @@
+<h1>DropDown Dinamico</h1>
+<div  [formGroup]="formulario">
+
+  <campo-dinamico formControlName="nome"
+  [id]="'nome'" [label]="'nome'" #nome
+  [listValue]="ListPessoas">
+  </campo-dinamico>
+
+
+  <div class="col-md-6 form-group">
+    <label class="label font-weight-bold">
+      Quantidade
+    </label>
+    <input type="number" class="form-control" formControlName="amount" id="amount" name="amount" value="0" #amount
+    (ngModelChange)="getAmount()">
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-3 mt-3" *ngIf="hidenAmount()" (click)="getAmount()">Criar dropdowns</button>
+
+
+  <div class="col-md-6"  formArrayName="listDropDown" >
+
+    <div  *ngFor="let item of listDropDown.controls; let i = index">
+
+      <campo-dinamico formControlName={{i}}
+      [id]="listField[i]" [label]="listField[i]"
+      [listValue]="ListPessoas"
+      >
+      </campo-dinamico>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <button class="btn btn-primary mr-3" type="submit" (click)="submit()" >salvar</button>
+      <button class="btn btn-primary mr-3" type="button" (click)="clearForm()" >limpar</button>
+    </div>
+  </div>
+
+
+</div>
+
+

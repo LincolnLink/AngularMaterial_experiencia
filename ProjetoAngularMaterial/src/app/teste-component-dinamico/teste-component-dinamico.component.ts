@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ContentChild, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-teste-component-dinamico',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teste-component-dinamico.component.css']
 })
 export class TesteComponentDinamicoComponent implements OnInit {
+
 
   constructor() { }
 

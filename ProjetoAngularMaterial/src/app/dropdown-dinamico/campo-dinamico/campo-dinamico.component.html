@@ -1,0 +1,13 @@
+
+<div class="col-md-6 form-group" >
+  <label [attr.for]="id" class="label font-weight-bold">
+    {{label}}
+  </label>
+  <!--
+  <input [id]="id" [type]="type" class="form-control" [ngClass]="classeCss"
+   [placeholder]="placeholder" [readonly]="!!isReadOnly" [(ngModel)]="value">
+-->
+   <select [id]="id" class="form-control" [(ngModel)]="value" >
+    <option *ngFor="let item of listValue " [value]="item.id" > {{item.name}}</option>
+   </select>
+</div>

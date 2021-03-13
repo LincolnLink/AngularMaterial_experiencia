@@ -6,7 +6,7 @@ const routes: Routes = [
 
 
    {
-    path: '', pathMatch: 'full', redirectTo: 'tableDinamica'
+    path: '', pathMatch: 'full', redirectTo: 'ddd1'
    },
    {
      path: 'formConfig',
@@ -40,7 +40,23 @@ const routes: Routes = [
     path: 'tableDinamica',
     loadChildren: () => import('./table-dinamico/table-dynamic.module')
      .then(t => t.TableDinamicoModule)
-  }
+   },
+   {
+    path: 'testeComponentDinamico',
+    loadChildren: () => import('./teste-component-dinamico/teste-component-dinamico/teste-component-dinamico.module')
+     .then(t => t.TesteComponentDinamicoModule)
+   },
+   {
+    path: 'ddd1',
+    loadChildren: () => import('./dropdown-dinamico/dropdown-dinamico/dropdown-dinamico.module')
+     .then(d => d.DropdownDinamicoModule)
+   },
+   {
+    path: 'ddd2',
+    loadChildren: () => import('./dropdown-dinamico2/dropdown-dinamico2/dropdown-dinamico2.module')
+     .then(d => d.DropdownDinamico2Module)
+   }
+
 
 ];
 

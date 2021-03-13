@@ -1,0 +1,18 @@
+
+
+<ng-template
+[ngTemplateOutlet]="customTemplateRef || defaultTemplate"
+[ngTemplateOutletContext]="{ names: names }">
+</ng-template>
+
+
+<!--let-names="names"-->
+<ng-template
+#defaultTemplate
+[ngTemplateOutletContext]="{ $implicit: { names2: names2 } }">
+  <ul>
+    <ng-container *ngFor="let name of names2">
+      <li>{{ name }}</li>
+    </ng-container>
+  </ul>
+</ng-template>
