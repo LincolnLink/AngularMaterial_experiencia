@@ -5,13 +5,13 @@
     {{label}}
   </label>
 
-   <select [id]="id" class="form-control" [(ngModel)]="value" >
+   <select [id]="id" class="form-control" [(ngModel)]=value >
     <option *ngFor="let item of listValue " [value]="item.id" > {{item.name}}</option>
    </select>
-<!--
-   <campo-control-erro   cssErro="warn" msnErro="Escolha uma opção" [condicao]=condicao2>
+
+   <campo-control-erro [cssErro]=classCss msnErro="Escolha uma opção" [campo]=campoAbstract>
 
    </campo-control-erro>
--->
+
 
 </div>

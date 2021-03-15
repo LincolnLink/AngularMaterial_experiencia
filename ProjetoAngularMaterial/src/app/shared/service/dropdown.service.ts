@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPessoas,IPessoas2 } from '../Entidades/Ipessoas';
+import { FormGroup } from '@angular/forms';
+import { IPessoas } from '../Entidades/Ipessoas';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,16 @@ export class DropdownService {
 
     return this.http.get<IPessoas[]>('assets/dados/pessoas.json');
     //.pipe(map((res: Response) => res.json()));
-
   }
 
-  get(){
+  //POST - envia dados para uma API de teste
+  postPessoas(form: FormGroup){
 
-    return this.http.get<IPessoas2[]>('assets/dados/dados.json');
-    //.pipe(map((res: Response) => res.json()));
+    // Criando uma copia do valor!
+    let valueSubmit = Object.assign({}, form.value);
 
+    console.log(valueSubmit);
   }
+
+
 }

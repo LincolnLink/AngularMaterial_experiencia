@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'campo-control-erro',
@@ -8,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CampoControlErroComponent implements OnInit {
 
   @Input()
-  condicao: boolean = false;
+  campo!: AbstractControl | FormControl | null;
   @Input() msnErro: string = '';
   @Input() cssErro: string = '';
 
@@ -18,6 +19,21 @@ export class CampoControlErroComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+
   }
 
+   // (VALIDAÇÃO) Verifica se o campo foi tocado e se é valido!
+   isInValidTouched(campo: AbstractControl | FormControl | null){
+
+    if(campo !== null){
+      return (
+        !campo?.valid &&
+        (campo?.touched || campo?.dirty)
+      );
+    }
+    else{
+      return false;
+    }
+  }
 }

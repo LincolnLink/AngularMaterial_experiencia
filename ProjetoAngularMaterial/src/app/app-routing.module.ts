@@ -51,11 +51,6 @@ const routes: Routes = [
     loadChildren: () => import('./dropdown-dinamico/dropdown-dinamico/dropdown-dinamico.module')
      .then(d => d.DropdownDinamicoModule)
    },
-   {
-    path: 'ddd2',
-    loadChildren: () => import('./dropdown-dinamico2/dropdown-dinamico2/dropdown-dinamico2.module')
-     .then(d => d.DropdownDinamico2Module)
-   }
 
 
 ];

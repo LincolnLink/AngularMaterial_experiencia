@@ -1,5 +1,8 @@
 
 
-<p-message severity=cssErro text={{msnErro}} *ngIf="condicao" ></p-message>
+
+<div class="alert {{cssErro}}" role="alert" *ngIf="isInValidTouched(campo)"  >
+  <strong>Erro: </strong>{{msnErro}}
+</div>
 
 <!--warn-->

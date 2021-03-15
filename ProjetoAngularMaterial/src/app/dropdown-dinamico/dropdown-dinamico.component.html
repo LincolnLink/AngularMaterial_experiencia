@@ -1,11 +1,10 @@
 <h1>DropDown Dinamico</h1>
-<div  [formGroup]="formulario">
+<form  [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
-  <campo-dinamico formControlName="nome"
-  [id]="'nome'" [label]="'nome'" #nome
+  <campo-dinamico formControlName="nome" [classCss]=cssErro
+  [id]="'nome'" [label]="'nome'" #nome [campoAbstract]="formulario.get('nome')"
   [listValue]="ListPessoas">
   </campo-dinamico>
-
 
   <div class="col-md-6 form-group">
     <label class="label font-weight-bold">
@@ -15,36 +14,24 @@
     (ngModelChange)="getAmount()">
   </div>
 
-  <button type="submit" class="btn btn-primary mb-3 mt-3" (click)="aki()">Console log</button>
-
-
-  <div class="col-md-6"  formArrayName="listDropDown" >
-
+  <div class="col-md-6"  formArrayName="listDropDown">
     <div  *ngFor="let item of listDropDown.controls; let i = index">
 
       <campo-dinamico formControlName={{i}}
-      [id]="listField[i]" [label]="listField[i]"
-      [listValue]="ListPessoas">
+      [id]="listField[i]" [label]="listField[i]" [classCss]=cssErro
+      [listValue]="ListPessoas" [campoAbstract]=listDropDown.controls[i]>
       </campo-dinamico>
 
-<!--[condicao2]=isInValidTouched(item.value)-->
-<!--{{this.isInValidTouched(listDropDown)}}-->
-<!--{{this.isInValidTouched(amount)}}-->
-
     </div>
-
   </div>
-
-
 
   <div class="row">
     <div class="col-md-12">
-      <button class="btn btn-primary mr-3" type="submit" (click)="submit()" >salvar</button>
+      <button class="btn btn-primary mr-3" type="submit" *ngIf="formulario.valid">salvar</button>
       <button class="btn btn-primary mr-3" type="button" (click)="clearForm()" >limpar</button>
     </div>
   </div>
 
-
-</div>
+</form>
 
 
