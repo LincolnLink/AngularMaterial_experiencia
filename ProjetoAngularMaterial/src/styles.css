@@ -9,3 +9,12 @@
     border: none;
     padding: 0;
   }
+
+  .mat-card-header-text{
+    margin-left: 0 !important;
+  }
+/*
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*/
+

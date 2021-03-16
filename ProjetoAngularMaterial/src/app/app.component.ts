@@ -1,9 +1,4 @@
-
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-
-
 
 @Component({
   selector: 'app-root',
@@ -12,7 +7,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
+  //ngx-bootstrap
   isCollapsed = true;
+  isTabela = true;
+  isForm = true;
+  isGrafic = true;
+  isDinamico = true;
 
   constructor(){
   }
@@ -20,6 +20,5 @@ export class AppComponent implements OnInit {
   ngOnInit(){
 
   }
-
 
 }

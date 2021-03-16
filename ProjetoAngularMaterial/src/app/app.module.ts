@@ -6,6 +6,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 //NGX-Bootstrap
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
+//Angular material menu lateral
+import { AngularMaterialModule } from './shared/module/angular-material/angular-material.module';
+import { MatNativeDateModule} from '@angular/material/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule} from '@angular/material/list';
+
 //DragDrop do CDK
 import { DragDropModule } from '@angular/cdk/drag-drop';
 //Tabela do Angular Material
@@ -19,25 +28,19 @@ import { GoogleChartsModule } from 'angular-google-charts';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule, //Basico do Angular
-    AppRoutingModule,
+    //Basico do Angular
+    BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-
+    MatListModule,
+    //AngularMaterialModule,
     CollapseModule.forRoot(), //NGX-Bootstrap
-
-    //GoogleChartsModule.forRoot(),//grafico
-
-    /*
-    DragDropModule, //DragDrop do CDK
-
-    MatTableModule, // Tabela do Angular Material
-    MatPaginatorModule,
-    MatSelectModule,
-    MatSortModule*/
+    AccordionModule.forRoot(),
+    AppRoutingModule,
 
   ],
-  exports:[
+  exports:
+  [
 
   ],
   providers: [],

@@ -1,37 +1,49 @@
-<h1>DropDown Dinamico</h1>
-<form  [formGroup]="formulario" (ngSubmit)="onSubmit()">
+<br>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title >DropDown Dinamico</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
 
-  <campo-dinamico formControlName="nome" [classCss]=cssErro
-  [id]="'nome'" [label]="'nome'" #nome [campoAbstract]="formulario.get('nome')"
-  [listValue]="ListPessoas">
-  </campo-dinamico>
+<br>
 
-  <div class="col-md-6 form-group">
-    <label class="label font-weight-bold">
-      Quantidade
-    </label>
-    <input type="number" class="form-control" formControlName="amount" id="amount" name="amount" value="0" #amount
-    (ngModelChange)="getAmount()">
-  </div>
 
-  <div class="col-md-6"  formArrayName="listDropDown">
-    <div  *ngFor="let item of listDropDown.controls; let i = index">
 
-      <campo-dinamico formControlName={{i}}
-      [id]="listField[i]" [label]="listField[i]" [classCss]=cssErro
-      [listValue]="ListPessoas" [campoAbstract]=listDropDown.controls[i]>
+    <form  [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+      <campo-dinamico formControlName="nome" [classCss]=cssErro
+      [id]="'nome'" [label]="'Nome'" #nome [campoAbstract]="formulario.get('nome')"
+      [listValue]="ListPessoas">
       </campo-dinamico>
 
-    </div>
-  </div>
+      <div class="col-md-6 form-group">
+        <label class="label font-weight-bold">
+          Quantidade
+        </label>
+        <input type="number" class="form-control" formControlName="amount" id="amount" name="amount" value="0" #amount
+        (ngModelChange)="getAmount()">
+      </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <button class="btn btn-primary mr-3" type="submit" *ngIf="formulario.valid">salvar</button>
-      <button class="btn btn-primary mr-3" type="button" (click)="clearForm()" >limpar</button>
-    </div>
-  </div>
+      <div class="col-md-6"  formArrayName="listDropDown">
+        <div  *ngFor="let item of listDropDown.controls; let i = index">
 
-</form>
+          <campo-dinamico formControlName={{i}}
+          [id]="listField[i]" [label]="listField[i]" [classCss]=cssErro
+          [listValue]="ListPessoas" [campoAbstract]=listDropDown.controls[i]>
+          </campo-dinamico>
+
+        </div>
+      </div>
+
+
+      <div class="col-md-12">
+        <button class="btn btn-primary mr-3" type="submit" *ngIf="formulario.valid">salvar</button>
+        <button class="btn btn-primary mr-3" type="button" (click)="clearForm()" >limpar</button>
+      </div>
+
+
+    </form>
+
 
 

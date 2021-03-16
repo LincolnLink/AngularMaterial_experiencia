@@ -24,10 +24,12 @@ export class RelatorioDeVendasComponent implements AfterViewInit, OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    this.montaColunas();
   }
 
   ngAfterViewInit(): void {
-    this.montaColunas();
+
   }
 
   private montaColunas() {
