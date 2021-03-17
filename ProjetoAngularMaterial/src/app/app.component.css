@@ -136,16 +136,18 @@ padding-left: 20px;
 /*Sobre escrevendo classe css do ANGULAR MATERIAL*/
 
 .mat-divider {
-  border-top-color: rgb(151 170 231/ 42%);
+  border-top-color: rgb(151 170 231/ 11%);
 }
 
 
 .navbar-dark .navbar-nav .show>.nav-link{
   color: rgba(255,255,255,.75);
+
 }
 
 .navbar-dark .navbar-nav .nav-link.active{
-  color: #fff !important;
+  /*color: #fff !important;*/
+  color: rgb(8 198 189 / 98%) !important;
 }
 
 .expansion-indicator::after {
@@ -172,3 +174,25 @@ padding-left: 20px;
 .second-level-nav{
   padding-left: 2.5em !important;
 }
+
+
+/*Seta*/
+@import"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+
+
+.seta .setaIcone{
+  transition: all 0.5s !important;
+}
+.muda{
+  transform: rotate(180deg) !important;
+}
+.setaIcone{
+  color: #fff !important;
+}
+/*
+i:before {
+  font-family: 'Glyphicons Halflings';
+  content: "\e114";
+  float: right;
+  transition: all 0.5s;
+}*/

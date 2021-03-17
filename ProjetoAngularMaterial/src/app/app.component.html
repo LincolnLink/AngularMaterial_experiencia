@@ -83,7 +83,7 @@
   <div class="collapse navbar-collapse" id="navbarNav" [collapse]="isCollapsed" [isAnimated]="true" >
 
     <ul class=" mr-auto sidenav navbar-nav" id="navAccordion">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/']" routerLinkActive="active"
          (click)="isCollapsed = true" >
           Home
@@ -91,9 +91,10 @@
         <mat-divider ></mat-divider>
       </li>
 
-      <li class="nav-item" >
-        <a class="nav-link" [attr.aria-expanded]="!isForm" (click)="isForm = !isForm" >
+      <li class="nav-item">
+        <a class="nav-link seta" [attr.aria-expanded]="!isForm" (click)="isForm = !isForm" >
           Formularios
+          <mat-icon class="setaIcone"  [class.muda]="isForm">keyboard_arrow_up</mat-icon>
         </a>
         <mat-divider></mat-divider>
       </li>
@@ -112,12 +113,13 @@
         <mat-divider></mat-divider>
       </li>
 
-      <li class="nav-item" >
+      <li class="nav-item">
 
-          <a class="nav-link" [attr.aria-expanded]="!isTabela" (click)="isTabela = !isTabela" >
-            Tabela
-          </a>
+        <a class="nav-link seta" [attr.aria-expanded]="!isTabela" (click)="isTabela = !isTabela" >
+          Tabelas
+          <mat-icon class="setaIcone"  [class.muda]="isTabela">keyboard_arrow_up</mat-icon>
 
+        </a>
 
         <mat-divider></mat-divider>
       </li>

@@ -23,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { GoogleChartsModule } from 'angular-google-charts';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
     BrowserAnimationsModule,
     HttpClientModule,
     MatListModule,
+    MatIconModule,
     //AngularMaterialModule,
     CollapseModule.forRoot(), //NGX-Bootstrap
     AccordionModule.forRoot(),
