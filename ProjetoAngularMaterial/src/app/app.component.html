@@ -161,17 +161,30 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/ddd1']" routerLinkActive="active"
+        <a class="nav-link seta" [attr.aria-expanded]="!isDinamico" (click)="isDinamico = !isDinamico" >
+          Dinamicos
+          <mat-icon class="setaIcone"  [class.muda]="isDinamico">keyboard_arrow_up</mat-icon>
+        </a>
+        <mat-divider></mat-divider>
+      </li>
+      <li class="nav-item" [collapse]="isDinamico" [isAnimated]="true">
+        <a class="nav-link second-level-nav" [routerLink]="['/ddd1']" routerLinkActive="active"
         (click)="isCollapsed = true">
         DropDonw Dinamico
         </a>
         <mat-divider ></mat-divider>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/testeComponentDinamico']" routerLinkActive="active"
+      <li class="nav-item" [collapse]="isDinamico" [isAnimated]="true">
+        <a class="nav-link second-level-nav" [routerLink]="['/testeComponentDinamico']" routerLinkActive="active"
         (click)="isCollapsed = true">
         Teste Component Dinamico
+        </a>
+        <mat-divider ></mat-divider>
+      </li>
+      <li class="nav-item" [collapse]="isDinamico" [isAnimated]="true">
+        <a class="nav-link second-level-nav" [routerLink]="['/dinamico2020']" routerLinkActive="active"
+        (click)="isCollapsed = true">
+        Component Dinamico 2020
         </a>
         <mat-divider ></mat-divider>
       </li>

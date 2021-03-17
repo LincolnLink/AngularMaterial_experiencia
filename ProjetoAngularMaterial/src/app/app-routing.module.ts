@@ -1,3 +1,4 @@
+import { DIR_DOCUMENT_FACTORY } from '@angular/cdk/bidi/dir-document-token';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -50,6 +51,11 @@ const routes: Routes = [
     path: 'ddd1',
     loadChildren: () => import('./dropdown-dinamico/dropdown-dinamico/dropdown-dinamico.module')
      .then(d => d.DropdownDinamicoModule)
+   },
+   {
+    path: 'dinamico2020',
+    loadChildren: () => import('./teste-dinamico2020/teste-dinamico2020/teste-dinamico2020.module')
+    .then(d => d.TesteDinamico2020Module)
    },
 
 

@@ -24,10 +24,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { GoogleChartsModule } from 'angular-google-charts';
 import {MatIconModule} from '@angular/material/icon';
+import { TesteDinamico2020Component } from './teste-dinamico2020/teste-dinamico2020.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [	AppComponent],
   imports: [
     //Basico do Angular
     BrowserModule,
