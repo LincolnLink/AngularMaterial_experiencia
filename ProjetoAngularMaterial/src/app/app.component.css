@@ -1,5 +1,4 @@
 
-
 html {
   position: relative;
   min-height: 100%;
@@ -12,12 +11,15 @@ body {
 
 
 .footer {
-position: absolute;
-bottom: 0;
-width: 100%;
-height: 3.5rem;
-line-height: 3.5rem;
-background-color: #ccc;
+  /*position: absolute;*/
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  /*
+  background-color: #ccc;*/
+  background: #191b25 !important;
+  color: #fff !important;
 }
 
 /*refatorando*/
@@ -32,6 +34,8 @@ background-color: #ccc;
   height: inherit;
   cursor: pointer;
   /*color: rgba(255,255,255,.5) ;*/
+  /*color: #676a8e !important;*/
+  /*color: #fff !important;*/
   z-index: 999;
 }
 
@@ -62,17 +66,11 @@ content: '\f068';
 font-family: 'FontAwesome';
 }
 
-.nav-item ul.nav-second-level {
-padding-left: 0;
-}
 
-.nav-item ul.nav-second-level > .nav-item {
-padding-left: 20px;
-}
 
 
 .sidenav{
-  background: #343a40;
+  /*background: #343a40;*/
 }
 
 /*desktop*/
@@ -82,7 +80,7 @@ padding-left: 20px;
     top: -2px;
     left: 0;
     width: 230px;
-    height: calc(100vh - 3.5rem);
+    height: calc(100vh - 3rem);
     margin-top: 3.5rem;
     box-sizing: border-box;
     border-top: 1px solid rgba(0, 0, 0, 0.3);
@@ -135,21 +133,8 @@ padding-left: 20px;
 
 /*Sobre escrevendo classe css do ANGULAR MATERIAL*/
 
-.mat-divider {
-  border-top-color: rgb(151 170 231/ 11%);
-}
 
-
-.navbar-dark .navbar-nav .show>.nav-link{
-  color: rgba(255,255,255,.75);
-
-}
-
-.navbar-dark .navbar-nav .nav-link.active{
-  /*color: #fff !important;*/
-  color: rgb(8 198 189 / 98%) !important;
-}
-
+/*seta quse erteza*/
 .expansion-indicator::after {
   border-style: solid;
   border-width: 0 2px 2px 0;
@@ -168,12 +153,17 @@ padding-left: 20px;
 /*criando*/
 .margi-container{
   margin-top: 5.9em;
-  min-height: 800px;
+  min-height: 900px;
+
+  /*teste de fundo*/
+  background: #000000;
+  color: #fff;
 }
 
 .second-level-nav{
   padding-left: 2.5em !important;
 }
+
 
 
 /*Seta*/

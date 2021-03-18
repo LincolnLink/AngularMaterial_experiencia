@@ -1,10 +1,15 @@
 .relatorio-rh {
   padding: 10px;
-  background-color: #bbdefb;
+  /*background-color: #bbdefb;*/
   width: 100%;
   margin-top: 20px;
-
-  tr.funcionario {
-    background-color: #64b5f6;
-  }
+  background: #191b25 !important;
+  /*color: #676a8e !important;*/
+  color: #fff
 }
+tr.funcionario {
+  /*
+    background-color: #64b5f6;
+*/
+  }
+
