@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { multi } from '../shared/data/dataGrafico';
+import { single } from '../shared/data/graficoBarHor';
+import { pizza } from '../shared/data/graficoPizza';
 
 
 @Component({
@@ -9,54 +11,81 @@ import { multi } from '../shared/data/dataGrafico';
 })
 export class GraficosComponent implements OnInit {
 
-  myType = 'ColumnChart' ;
+    //Tamanho dos graficos
+    //view: [number, number] = [0, 0];
 
-  myData = [
-    [ 'Londres' , 500 ],
-    [ 'New York' , 400 ],
-    [ 'Paris' , 300 ],
-    [ 'Berlim' , 20 ],
-    [ 'Kairo' , 90 ]
-  ];
 
-  /*ngx tabela */
+    // Grafico em barra
+    single: any[] = [];
 
-  multi: any[] = [];
-  view: any[] = [700, 300];
+    showXAxis: boolean = true;
+    showYAxis: boolean = true;
+    gradient: boolean = false;
+    showLegend: boolean = false;
 
-  // options
-  legend: boolean = true;
-  showLabels: boolean = true;
-  animations: boolean = true;
-  xAxis: boolean = true;
-  yAxis: boolean = true;
-  showYAxisLabel: boolean = true;
-  showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Year';
-  yAxisLabel: string = 'Population';
-  timeline: boolean = true;
+    showXAxisLabelBarhor: boolean = true;
+    showYAxisLabelBarhor: boolean = true;
 
-  colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
-  };
+    yAxisLabelBarhor: string = 'Country';
+    xAxisLabelBarhor: string = 'Population';
 
-  constructor() { }
+    colorSchemeBarHor = {
+      domain: ['#5252f7', '#5AA454', '#5252f9', '#5AA454']
+    };
 
-  ngOnInit(){
-    Object.assign(this, { multi });
-    //this.multi = multi
-  }
 
-  onSelect(data: Event): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
+    //Grafico em pizza
+    pizza: any[] = [];
 
-  onActivate(data: Event): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
+    // options
+    gradientPizza: boolean = true;
+    showLegendPizza: boolean = true;
+    showLabels: boolean = true;
+    isDoughnut: boolean = false;
+    legendPosition: string = 'right';
 
-  onDeactivate(data: Event): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-  }
+    colorScheme = {
+      domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    };
+
+    //Deixando os graficos responsivo
+    @ViewChild('resizedDiv') resizedDiv!: ElementRef;
+
+    public previousWidthOfResizedDiv: number = 0;
+
+
+    constructor() {}
+
+    ngOnInit(){
+      // Dados do banco
+      Object.assign(this, { multi });
+      Object.assign(this, { single });
+      Object.assign(this, { pizza });
+
+    }
+
+    onSelect(data: Event): void {
+      console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+    }
+
+    onActivate(data: Event): void {
+      console.log('Activate', JSON.parse(JSON.stringify(data)));
+    }
+
+    onDeactivate(data: Event): void {
+      console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+    }
+
+    // Método que deixar grafico responsivo
+    ngAfterViewChecked() {
+      if (this.previousWidthOfResizedDiv != this.resizedDiv.nativeElement.clientWidth) {
+
+        //render your data for the chart using spread operator
+        this.single = [...this.single]
+      }
+      this.previousWidthOfResizedDiv = this.resizedDiv.nativeElement.clientWidth;
+    }
+
+
 
 }

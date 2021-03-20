@@ -1,0 +1,15 @@
+<ng-template #defaultTabButtons>
+
+  <div class="default-tab-buttons">
+      ...
+  </div>
+
+</ng-template>
+
+<!-- <ng-container *ngTemplateOutlet="headerTemplate ? headerTemplate: defaultTabButtons"> -->
+
+  <ng-container *ngTemplateOutlet="logica();  context: this.ctx">
+
+  </ng-container>
+<br>
+<p>... rest of tab container component ...</p>

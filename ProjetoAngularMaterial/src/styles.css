@@ -18,7 +18,8 @@
   .bgGlobal{
     background: #191b25 !important;
     /*color: #676a8e !important;*/
-    color: #fff
+    color: #fff;
+    fill: #fff;
   }
 
   /*menu sidenav*/
@@ -57,9 +58,15 @@
     color: #fff
   }
 
+  /*borda card */
+  .card-borde{
+    border-radius: 4px;
+  }
+  /**/
   .form-control{
     background-color: black;
     color: #fff;
+
   }
 
   /*

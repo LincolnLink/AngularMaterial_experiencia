@@ -1,3 +1,62 @@
-<p>
-  guia works!
-</p>
+
+<ng-template #customTabButtons let-label="titulo">
+
+  <h1>{{ label }}</h1>
+
+  <div class="d-flex">
+
+    <button class="btn btn-primary tab-button" (click)="login()">
+      {{ loginText }}
+    </button>
+
+    <button class="btn btn-primary ml-3 tab-button" (click)="signUp()">
+      {{ signUpText }}
+    </button>
+  </div>
+</ng-template>
+
+
+<tab-container [headerTemplate]="customTabButtons"></tab-container>
+
+<!--
+<div class="lessons-list" *ngIf="lessons else loading">
+  ...
+</div>
+
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template> -->
+
+<!-- Forma errada de usar ngIf com ngFor -->
+<!-- <div *ngIf="lessons">
+  <div class="lesson" *ngFor="let lesson of lessons">
+      <div class="lesson-detail">
+          {{lesson | json}}
+      </div>
+  </div>
+</div> -->
+
+<!-- O mais correto de se fazer -->
+<!--
+<ng-container *ngIf="lessons  else loading">
+  <div class="lesson" *ngFor="let lesson of lessons">
+      <div class="lesson-detail">
+          {{lesson | json}}
+      </div>
+  </div>
+</ng-container>
+
+<ng-container *ngTemplateOutlet="loading"></ng-container>
+-->
+
+
+
+<!-- Definindo um template e suas variaveis
+<ng-template #estimateTemplate let-lessonsCounter="estimate" let-name="nameValue">
+  <div> Approximately {{lessonsCounter}} lessons ...</div>
+  <div> Meu nome é : {{ name }}</div>
+</ng-template>-->
+
+<!-- Invocando o template definido, passando id e contexto do template.
+<ng-container *ngTemplateOutlet="estimateTemplate; context:ctx">
+</ng-container> -->
