@@ -22,6 +22,11 @@
     fill: #fff;
   }
 
+   /*borda card */
+   .card-borde{
+    border-radius: 4px;
+  }
+
   /*menu sidenav*/
   .nav-link{
     color: #fff !important;
@@ -58,10 +63,6 @@
     color: #fff
   }
 
-  /*borda card */
-  .card-borde{
-    border-radius: 4px;
-  }
   /**/
   .form-control{
     background-color: black;
@@ -113,3 +114,8 @@
   border-radius: 0 !important;
  }
 
+ /*tab*/
+
+ .mat-tab-label-content{
+  color: rgb(8 198 189 / 98%) !important;
+ }

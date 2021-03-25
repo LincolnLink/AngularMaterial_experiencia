@@ -1,4 +1,3 @@
-import { DIR_DOCUMENT_FACTORY } from '@angular/cdk/bidi/dir-document-token';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -7,7 +6,7 @@ const routes: Routes = [
 
 
    {
-    path: '', pathMatch: 'full', redirectTo: 'ddd1'
+    path: '', pathMatch: 'full', redirectTo: 'tab'
    },
    {
      path: 'formConfig',
@@ -56,6 +55,11 @@ const routes: Routes = [
     path: 'dinamico2020',
     loadChildren: () => import('./teste-dinamico2020/teste-dinamico2020/teste-dinamico2020.module')
     .then(d => d.TesteDinamico2020Module)
+   },
+   {
+    path: 'tab',
+    loadChildren: () => import('./teste-tab/teste-tab/teste-tab.module')
+    .then(t => t.TesteTabModule)
    },
 
 

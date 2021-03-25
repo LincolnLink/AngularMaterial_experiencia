@@ -1,1 +1,32 @@
-<p>teste-tab works!</p>
+
+<br>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Exemplo de Tab</mat-card-title>
+  </mat-card-header>
+</mat-card>
+<br>
+<div class="card-borde bgGlobal">
+
+
+    <mat-tab-group mat-align-tabs="start" class="">
+
+      <mat-tab label={{tab1}}>
+        Content 1
+        <router-outlet></router-outlet>
+      </mat-tab>
+      <mat-tab label="Second">
+        Content 2
+        <router-outlet></router-outlet>
+      </mat-tab>
+      <mat-tab label="Third" *ngIf="false" >
+        Content 3
+        <router-outlet></router-outlet>
+      </mat-tab>
+
+    </mat-tab-group>
+
+
+
+</div>
+
